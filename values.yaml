@@ -2,25 +2,28 @@ prometheus:
   ingress:
     enabled: true
     annotations:
-      cert-manager.io/cluster-issuer: tap-ingress-selfsigned
+      cert-manager.io/cluster-issuer: letsencrypt-production 
     hosts:
-    - "prometheus.tap-demo.vrabbi.cloud"
+    - "prometheus.full.cssa.tapsme.org"
     tls:
-    - secretName: grafana-cert
+    - secretName: monitoring-cert
       hosts:
-      - "prometheus.tap-demo.vrabbi.cloud"
+      - "prometheus.full.cssa.tapsme.org"
 grafana:
-  adminPassword: "Ch@ngeMe123!"
+  adminPassword: "wkm5UTP!ana3bzy2wpj"
+  persistence:
+    type: pvc
+    enabled: true
   ingress:
     enabled: true
     annotations:
-      cert-manager.io/cluster-issuer: tap-ingress-selfsigned
+      cert-manager.io/cluster-issuer: letsencrypt-production 
     hosts:
-    - "grafana.tap-demo.vrabbi.cloud"
+    - "grafana.full.cssa.tapsme.org"
     tls:
-    - secretName: grafana-cert
+    - secretName: monitoring-cert
       hosts:
-      - "grafana.tap-demo.vrabbi.cloud"
+      - "grafana.full.cssa.tapsme.org"
 kube-state-metrics:
   rbac:
     extraRules:
